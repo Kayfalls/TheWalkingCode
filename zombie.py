@@ -18,6 +18,7 @@ class Zombie:
     def __init__(self, type="Walker", damage=15):
         self.type = type
         self.damage = damage
+        self.health = 50
 
         # TODO: Add health attribute (default 50)
         # self.health = 50
@@ -25,6 +26,15 @@ class Zombie:
     def attack(self, survivor):
         """Deal damage to a survivor."""
         survivor.take_damage(self.damage)
+
+    def take_damage(self, amount):
+        self.health -= amount
+        if self.health < 0:
+            self.health = 0
+
+    def is_dead(self):
+        if self.health <= 0:
+            return True
 
     # TODO: Implement take_damage(amount) so zombies can be damaged
     # TODO: Implement is_dead() -> returns True if health <= 0
