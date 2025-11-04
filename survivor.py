@@ -34,11 +34,13 @@ class Survivor:
 
     def remove_item(self, item):
         """
-        TODO:
         Remove an item from inventory *if it exists*.
         If the item is NOT in the inventory, do nothing.
         """
-        pass  # TODO implement this
+        if item in self.inventory:
+            self.inventory.remove(item)
+        else:
+            pass
 
     def take_damage(self, amount):
         """
@@ -50,11 +52,12 @@ class Survivor:
 
     def heal(self, amount):
         """
-        TODO:
         Increase survivor health by `amount`.
         Health should NOT exceed 100.
         """
-        pass  # TODO implement this
+        self.health += amount
+        if self.health > 100:
+            self.health = 100
 
     def is_alive(self):
         """Return True if survivor is still alive."""
